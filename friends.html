@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Isya's Friends</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0 0 80px 0;
+      background-image: url('img3.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    .clock-container {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      text-align: right;
+      font-size: 12px;
+      color: #444;
+    }
+
+    header {
+      background-color: lightpink;
+      color: black;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    nav {
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 10px 0;
+      opacity: 0.7;
+    }
+
+    nav a {
+      position: relative;
+      display: inline-block;
+      padding: 5px 10px;
+      color: #404040;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background-color: hotpink;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: hotpink;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: hotpink;
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 20px;
+      margin: 100px auto;
+      max-width: 800px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      text-align: center;
+      opacity: 0.7;
+    }
+
+    footer {
+      text-align: center;
+      height: 45px;
+      line-height: 1;
+      background-color: #f1f1f1;
+      color: black;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="clock-container">
+      <p id="clock">🕒 --:--:--</p>
+      <p id="date">📅 --/--/----</p>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <img src="photo.jpg" alt="My Photo" style="width:80px; height:80px; border-radius:50%; border: 2px solid white;">
+        <h1 style="margin: 0;">&#10084;STEP INTO MY WORLD&#10084;</h1>
+      </div>
+      <p style="margin-top: 0px; font-style: italic; font-size: 12px;">"Smile, explore, and be yourself!"</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">ABOUT ME</a>
+    <a href="education.html">EDUCATION</a>
+    <a href="family.html">FAMILY</a>
+    <a href="experience.html">EXPERIENCE</a>
+    <a href="friends.html" class="active">FRIENDS</a>
+    <a href="hobby.html">HOBBY</a>
+    <a href="favouriteplace.html">FAV PLACE</a>
+    <a href="favouritefood.html">FAV FOOD</a>
+    <a href="gallery.html">GALLERY</a>
+  </nav>
+
+  <section>
+    <h3>MY FRIENDS</h3>
+    <p>University life wouldn’t be the same without my friends — from late-night talks to spontaneous adventures, they made every moment more fun and unforgettable.</p>
+  </section>
+
+  <div style="text-align: center; margin-top: 10px;">
+    <audio controls autoplay>
+      <source src="Ungu - Tercipta Untukku.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <footer>
+    <p>All right reserved by IsyaaFairus, 2025</p>
+  </footer>
+
+  <script>
+    // Nav Active Highlight
+    const currentPage = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll("nav a");
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+
+    // Jam & Tarikh
+    function updateClockAndDate() {
+      const now = new Date();
+      const time = now.toLocaleTimeString('en-GB');
+      const date = now.toLocaleDateString('en-GB', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      document.getElementById('clock').textContent = '🕒 ' + time;
+      document.getElementById('date').textContent = '📅 ' + date;
+    }
+
+    setInterval(updateClockAndDate, 1000);
+    updateClockAndDate();
+  </script>
+
+</body>
+</html>

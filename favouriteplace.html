@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Isya's FavouritePlace</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0 0 80px 0;
+      background-image: url('background2.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    .clock-container {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      text-align: right;
+      font-size: 12px;
+      color: #444;
+    }
+
+    header {
+      background-color: lightpink;
+      color: black;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    nav {
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    nav a {
+      position: relative;
+      display: inline-block;
+      padding: 5px 10px;
+      color: #404040;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background-color: hotpink;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: hotpink;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: hotpink;
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 45px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .slideshow-3col {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .slideshow-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .slideshow-image {
+      width: 100%;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .show {
+      display: block !important;
+      animation: fadeEffect 1.5s;
+    }
+
+    @keyframes fadeEffect {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
+    }
+
+    footer {
+      text-align: center;
+      height: 45px;
+      line-height: 1;
+      background-color: #f1f1f1;
+      color: black;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="clock-container">
+      <p id="clock">🕒 --:--:--</p>
+      <p id="date">📅 --/--/----</p>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <img src="photo.jpg" alt="My Photo" style="width:80px; height:80px; border-radius:50%; border: 2px solid white;">
+        <h1 style="margin: 0;">&#10084;STEP INTO MY WORLD&#10084;</h1>
+      </div>
+      <p style="margin-top: 0px; font-style: italic; font-size: 12px;">"Smile, explore, and be yourself!"</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">ABOUT ME</a>
+    <a href="education.html">EDUCATION</a>
+    <a href="family.html">FAMILY</a>
+    <a href="experience.html">EXPERIENCE</a>
+    <a href="friends.html">FRIENDS</a>
+    <a href="hobby.html">HOBBY</a>
+    <a href="favouriteplace.html">FAV PLACE</a>
+    <a href="favouritefood.html">FAV FOOD</a>
+    <a href="gallery.html">GALLERY</a>
+  </nav>
+
+  <h2>A Peek into My World</h2>
+
+  <!-- 3-column slideshow layout -->
+  <div class="slideshow-3col">
+    <div class="slideshow-column">
+      <img class="slideshow-image" src="img9.jpg" alt="Left 1">
+      <img class="slideshow-image" src="img10.jpg" alt="Left 2">
+    </div>
+    <div class="slideshow-column">
+      <img class="slideshow-image" src="img11.jpg" alt="Center 1">
+      <img class="slideshow-image" src="img12.jpg" alt="Center 2">
+    </div>
+    <div class="slideshow-column">
+      <img class="slideshow-image" src="img13.jpg" alt="Right 1">
+      <img class="slideshow-image" src="img14.jpg" alt="Right 2">
+    </div>
+  </div>
+
+  <footer>
+    <p>All rights reserved by IsyaaFairus, 2025</p>
+  </footer>
+
+  <script>
+    // Slideshow
+    let currentIndices = [0, 0, 0];
+    const columns = document.querySelectorAll('.slideshow-column');
+
+    function rotateSlides() {
+      columns.forEach((column, colIndex) => {
+        const images = column.querySelectorAll('.slideshow-image');
+        images.forEach((img, i) => img.classList.remove('show'));
+        currentIndices[colIndex] = (currentIndices[colIndex] + 1) % images.length;
+        images[currentIndices[colIndex]].classList.add('show');
+      });
+      setTimeout(rotateSlides, 3000);
+    }
+
+    rotateSlides();
+
+    // Nav Active
+    const currentPage = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll("nav a");
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+
+    // Jam & Tarikh
+    function updateClockAndDate() {
+      const now = new Date();
+      const time = now.toLocaleTimeString('en-GB');
+      const date = now.toLocaleDateString('en-GB', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      document.getElementById('clock').textContent = '🕒 ' + time;
+      document.getElementById('date').textContent = '📅 ' + date;
+    }
+
+    setInterval(updateClockAndDate, 1000);
+    updateClockAndDate();
+  </script>
+
+</body>
+</html>

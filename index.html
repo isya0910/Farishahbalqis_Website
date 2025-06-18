@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Isya's Personal Website</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-image: url('background2.jpg');
+      		background-repeat: no-repeat;
+      		background-attachment: fixed;
+      		background-size: cover;
+		}
+		header {
+			background-color: lightpink;
+			color: black;
+			padding: 10px;
+			text-align: center;
+			position: relative;
+		}
+		.clock-container {
+			position: absolute;
+			top: 10px;
+			right: 20px;
+			text-align: right;
+			font-size: 12px;
+			color: #444;
+		}
+		nav {
+			background-color: #f2f2f2;
+			text-align: center;
+			padding: 10px 0;
+		}
+		nav a {
+			position: relative;
+			display: inline-block;
+			padding: 5px 10px;
+			color: #404040;
+			font-weight: bold;
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+		nav a::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: -5px;
+			width: 0%;
+			height: 2px;
+			background-color: hotpink;
+			transition: width 0.3s ease;
+		}
+		nav a:hover {
+			color: hotpink;
+		}
+		nav a:hover::after {
+			width: 100%;
+		}
+		/* Active link styling */
+		nav a.active,
+		nav a.active:hover {
+			color: hotpink;
+		}
+		nav a.active::after {
+			width: 100%;
+		}
+		section {
+			padding: 20px;
+			margin: 20px auto;
+			max-width: 700px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			background-color: #f9f9f9;
+			text-align: center;
+			opacity: 0.89;
+		}
+		footer {
+      		text-align: center;
+      		height: 45px;
+      		line-height: 1;
+      		background-color: #f1f1f1;
+      		color: black;
+      		position: fixed;
+      		bottom: 0;
+      		width: 100%;
+		}
+		.game-container {
+			max-width: 600px;
+			margin: 20px auto;
+			display: grid;
+			grid-template-columns: repeat(4, 100px);
+			gap: 15px;
+			justify-content: center;
+		}
+		.card {
+			width: 100px;
+			height: 100px;
+			background-color: #ffb6c1;
+			border-radius: 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 32px;
+			cursor: pointer;
+			color: #fff;
+			transition: transform 0.3s;
+		}
+		.card.flipped {
+			background-color: #fff;
+			color: #333;
+			cursor: default;
+		}
+	</style>
+</head>
+<body>
+
+	<header>
+		<div class="clock-container">
+			<p id="clock">🕒 --:--:--</p>
+			<p id="date">📅 display date...</p>
+		</div>
+		<div style="display: flex; flex-direction: column; align-items: center;">
+			<div style="display: flex; align-items: center; gap: 15px;">
+				<img src="photo.jpg" alt="My Photo" style="width:80px; height:80px; border-radius:50%; border: 2px solid white;">
+				<h1 style="margin: 0;">&#10084;STEP INTO MY WORLD&#10084;</h1>
+			</div>
+			<p style="margin-top: 0px; font-style: italic; font-size: 12px;">"Smile, explore, and be yourself!"</p>
+		</div>
+	</header>
+
+	<nav>
+		<a href="index.html">ABOUT ME</a>
+		<a href="education.html">EDUCATION</a>
+		<a href="family.html">FAMILY</a>
+		<a href="experience.html">EXPERIENCE</a>
+		<a href="friends.html">FRIENDS</a>
+		<a href="hobby.html">HOBBY</a>
+		<a href="favouriteplace.html">FAV PLACE</a>
+		<a href="favouritefood.html">FAV FOOD</a>
+		<a href="gallery.html">GALLERY</a>
+	</nav>
+
+	<section>
+		<h3>🧠 Flip & Match Mini Game</h3>
+		<p>Jom main game duluuu! Baru kenal hehe</p>
+		<div class="game-container" id="game"></div>
+	</section>
+
+	<footer>
+		<p>All right reserved by IsyaaFairus, 2025</p>
+	</footer>
+
+	<script>
+		// JAM & TARIKH SEMASA
+		function updateClockAndDate() {
+			const now = new Date();
+			const time = now.toLocaleTimeString('en-US', { hour12: false });
+			const date = now.toLocaleDateString('en-US', {
+				weekday: 'long',
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric'
+			});
+			document.getElementById('clock').textContent = '🕒 ' + time;
+			document.getElementById('date').textContent = '📅 ' + date;
+		}
+		setInterval(updateClockAndDate, 1000);
+		updateClockAndDate();
+
+		// GAME FLIP KAD
+		const emojis = ['🍎','🍌','🍇','🍓','🍉','🍒','🍍','🥝'];
+		let cards = [...emojis, ...emojis];
+		let flippedCards = [];
+		let matchedCards = [];
+
+		function shuffle(array) {
+			for (let i = array.length - 1; i > 0; i--) {
+				const j = Math.floor(Math.random() * (i + 1));
+				[array[i], array[j]] = [array[j], array[i]];
+			}
+		}
+
+		function createBoard() {
+			const game = document.getElementById('game');
+			shuffle(cards);
+			cards.forEach((emoji, index) => {
+				const card = document.createElement('div');
+				card.classList.add('card');
+				card.dataset.index = index;
+				card.dataset.emoji = emoji;
+				card.innerHTML = '';
+				card.addEventListener('click', flipCard);
+				game.appendChild(card);
+			});
+		}
+
+		function flipCard() {
+			if (flippedCards.length >= 2 || this.classList.contains('flipped')) return;
+
+			this.classList.add('flipped');
+			this.innerHTML = this.dataset.emoji;
+			flippedCards.push(this);
+
+			if (flippedCards.length === 2) {
+				const [first, second] = flippedCards;
+				if (first.dataset.emoji === second.dataset.emoji) {
+					matchedCards.push(first, second);
+					flippedCards = [];
+					if (matchedCards.length === cards.length) {
+						setTimeout(() => alert('🎉 Tahniah! Anda menang, baru boleh kenal siapa saya!'), 300);
+					}
+				} else {
+					setTimeout(() => {
+						first.classList.remove('flipped');
+						second.classList.remove('flipped');
+						first.innerHTML = '';
+						second.innerHTML = '';
+						flippedCards = [];
+					}, 1000);
+				}
+			}
+		}
+
+		createBoard();
+
+		// ACTIVE LINK LOGIC
+		const currentPage = window.location.pathname.split('/').pop();
+		const navLinks = document.querySelectorAll('nav a');
+		navLinks.forEach(link => {
+			if (link.getAttribute('href') === currentPage) {
+				link.classList.add('active');
+			}
+		});
+	</script>
+
+</body>
+</html>

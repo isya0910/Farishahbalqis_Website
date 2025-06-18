@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Isya's FavouriteFood</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0 0 80px 0;
+      background-image: url('background2.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    .clock-container {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      text-align: right;
+      font-size: 12px;
+      color: #444;
+    }
+
+    header {
+      background-color: lightpink;
+      color: black;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    nav {
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    nav a {
+      position: relative;
+      display: inline-block;
+      padding: 5px 10px;
+      color: #404040;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background-color: hotpink;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: hotpink;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: hotpink;
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      text-align: center;
+      opacity: 0.6;
+    }
+
+    .food-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin: 30px auto;
+      max-width: 1000px;
+      padding: 0 20px;
+    }
+
+    .food-card {
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: fadeIn 1.2s ease-in;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .food-card:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .food-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .food-card h4 {
+      margin: 0;
+      background-color: #eee;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      height: 45px;
+      line-height: 1;
+      background-color: #f1f1f1;
+      color: black;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="clock-container">
+      <p id="clock">🕒 --:--:--</p>
+      <p id="date">📅 --/--/----</p>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <img src="photo.jpg" alt="My Photo" style="width:80px; height:80px; border-radius:50%; border: 2px solid white;">
+        <h1 style="margin: 0;">&#10084;STEP INTO MY WORLD&#10084;</h1>
+      </div>
+      <p style="margin-top: 0px; font-style: italic; font-size: 12px;">"Smile, explore, and be yourself!"</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">ABOUT ME</a>
+    <a href="education.html">EDUCATION</a>
+    <a href="family.html">FAMILY</a>
+    <a href="experience.html">EXPERIENCE</a>
+    <a href="friends.html">FRIENDS</a>
+    <a href="hobby.html">HOBBY</a>
+    <a href="favouriteplace.html">FAV PLACE</a>
+    <a href="favouritefood.html">FAV FOOD</a>
+    <a href="gallery.html">GALLERY</a>
+  </nav>
+
+  <section>
+    <h3>MY FAVOURITE FOOD</h3>
+    <p>"Food is the ingredient that binds us together. I love both cooking and enjoying food from different cultures."</p>
+  </section>
+
+  <div class="food-gallery">
+    <div class="food-card">
+      <img src="cook1.jpg" alt="Masakan rumah">
+      <h4>Masakan rumah</h4>
+    </div>
+    <div class="food-card">
+      <img src="cook2.jpg" alt="Selera kampung">
+      <h4>Selera kampung</h4>
+    </div>
+    <div class="food-card">
+      <img src="cook3.jpg" alt="Terapi memasak">
+      <h4>Memasak terapi diri</h4>
+    </div>
+    <div class="food-card">
+      <img src="eat1.jpg" alt="Good food, good mood">
+      <h4>Good food, good mood</h4>
+    </div>
+    <div class="food-card">
+      <img src="eat2.jpg" alt="Eat well, feel well">
+      <h4>Eat well, feel well</h4>
+    </div>
+    <div class="food-card">
+      <img src="eat3.jpg" alt="Every bite counts">
+      <h4>Every bite counts</h4>
+    </div>
+  </div>
+
+  <footer>
+    <p>All rights reserved by IsyaaFairus, 2025</p>
+  </footer>
+
+  <script>
+    // Nav Active Function
+    const currentPage = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll("nav a");
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+
+    // Jam & Tarikh
+    function updateClockAndDate() {
+      const now = new Date();
+      const time = now.toLocaleTimeString('en-GB');
+      const date = now.toLocaleDateString('en-GB', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      document.getElementById('clock').textContent = '🕒 ' + time;
+      document.getElementById('date').textContent = '📅 ' + date;
+    }
+
+    setInterval(updateClockAndDate, 1000);
+    updateClockAndDate();
+  </script>
+
+</body>
+</html>

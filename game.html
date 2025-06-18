@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My Personal Website - Game</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background: #ffe6f0;
+			text-align: center;
+		}
+
+		h1 {
+			background-color: lightpink;
+			margin: 0;
+			padding: 20px;
+			color: #333;
+		}
+
+		.game-container {
+			max-width: 600px;
+			margin: 40px auto;
+			display: grid;
+			grid-template-columns: repeat(4, 100px);
+			gap: 15px;
+			justify-content: center;
+		}
+
+		.card {
+			width: 100px;
+			height: 100px;
+			background-color: #ffb6c1;
+			border-radius: 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 32px;
+			cursor: pointer;
+			color: #fff;
+			transition: transform 0.3s;
+		}
+
+		.card.flipped {
+			background-color: #fff;
+			color: #333;
+			cursor: default;
+		}
+
+		footer {
+			background-color: #f1f1f1;
+			padding: 10px;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			color: #000;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>🧠 Flip & Match Game</h1>
+
+	<div class="game-container" id="game">
+		<!-- Cards will be inserted by JavaScript -->
+	</div>
+
+	<footer>
+		<p>All rights reserved by IsyaaFairus, 2025</p>
+	</footer>
+
+	<script>
+		const emojis = ['🍓', '🍓', '🍇', '🍇', '🍉', '🍉', '🍊', '🍊'];
+		let shuffled = [...emojis].sort(() => 0.5 - Math.random());
+
+		const game = document.getElementById("game");
+		let flippedCards = [];
+		let lockBoard = false;
+
+		// Create cards
+		shuffled.forEach(emoji => {
+			const card = document.createElement('div');
+			card.classList.add('card');
+			card.dataset.emoji = emoji;
+			card.innerText = '?';
+			game.appendChild(card);
+
+			card.addEventListener('click', () => {
+				if (lockBoard || card.classList.contains('flipped')) return;
+
+				card.innerText = card.dataset.emoji;
+				card.classList.add('flipped');
+				flippedCards.push(card);
+
+				if (flippedCards.length === 2) {
+					lockBoard = true;
+					setTimeout(() => {
+						if (flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
+							// Match
+							flippedCards = [];
+						} else {
+							// No match
+							flippedCards.forEach(c => {
+								c.innerText = '?';
+								c.classList.remove('flipped');
+							});
+							flippedCards = [];
+						}
+						lockBoard = false;
+					}, 1000);
+				}
+			});
+		});
+	</script>
+
+</body>
+</html>

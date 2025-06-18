@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Isya's Family</title>
+
+  <!-- Lightbox CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0 0 80px 0;
+      background-image: url('background2.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    .clock-container {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      text-align: right;
+      font-size: 12px;
+      color: #444;
+    }
+
+    header {
+      background-color: lightpink;
+      color: black;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    nav {
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 10px 0;
+      opacity: 0.7;
+    }
+
+    nav a {
+      position: relative;
+      display: inline-block;
+      padding: 5px 10px;
+      color: #404040;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background-color: hotpink;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: hotpink;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: hotpink;
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    footer {
+      text-align: center;
+      height: 45px;
+      line-height: 1;
+      background-color: #f1f1f1;
+      color: black;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      color: black;
+      margin-top: 40px;
+      font-weight: bold;
+    }
+
+    .gallery-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .gallery-container a img {
+      width: 200px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .gallery-container a img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="clock-container">
+      <p id="clock">🕒 --:--:--</p>
+      <p id="date">📅 --/--/----</p>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <img src="photo.jpg" alt="My Photo" style="width:80px; height:80px; border-radius:50%; border: 2px solid white;">
+        <h1 style="margin: 0;">&#10084;STEP INTO MY WORLD&#10084;</h1>
+      </div>
+      <p style="margin-top: 0px; font-style: italic; font-size: 12px;">"Smile, explore, and be yourself!"</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">ABOUT ME</a>
+    <a href="education.html">EDUCATION</a>
+    <a href="family.html" class="active">FAMILY</a>
+    <a href="experience.html">EXPERIENCE</a>
+    <a href="friends.html">FRIENDS</a>
+    <a href="hobby.html">HOBBY</a>
+    <a href="favouriteplace.html">FAV PLACE</a>
+    <a href="favouritefood.html">FAV FOOD</a>
+    <a href="gallery.html">GALLERY</a>
+  </nav>
+
+  <h2>📸 My Favourite Moments 📸</h2>
+
+  <div class="gallery-container">
+    <a href="img19.jpg" data-lightbox="mygallery" data-title="Gambar 19">
+      <img src="img19.jpg" alt="img19">
+    </a>
+    <a href="img26.jpg" data-lightbox="mygallery" data-title="Gambar 26">
+      <img src="img26.jpg" alt="img26">
+    </a>
+    <a href="img21.jpg" data-lightbox="mygallery" data-title="Gambar 21">
+      <img src="img21.jpg" alt="img21">
+    </a>
+    <a href="img23.jpg" data-lightbox="mygallery" data-title="Gambar 23">
+      <img src="img23.jpg" alt="img23">
+    </a>
+    <a href="img24.jpg" data-lightbox="mygallery" data-title="Gambar 24">
+      <img src="img24.jpg" alt="img24">
+    </a>
+    <a href="img25.jpg" data-lightbox="mygallery" data-title="Gambar 25">
+      <img src="img25.jpg" alt="img25">
+    </a>
+    <a href="img20.jpg" data-lightbox="mygallery" data-title="Gambar 20">
+      <img src="img20.jpg" alt="img20">
+    </a>
+    <a href="img28.jpg" data-lightbox="mygallery" data-title="Gambar 28">
+      <img src="img28.jpg" alt="img28">
+    </a>
+    <a href="img30.jpg" data-lightbox="mygallery" data-title="Gambar 30">
+      <img src="img30.jpg" alt="img30">
+    </a>
+    <a href="img31.jpg" data-lightbox="mygallery" data-title="Gambar 31">
+      <img src="img31.jpg" alt="img31">
+    </a>
+    <a href="img32.jpg" data-lightbox="mygallery" data-title="Gambar 32">
+      <img src="img32.jpg" alt="img32">
+    </a>
+    <a href="img33.jpg" data-lightbox="mygallery" data-title="Gambar 33">
+      <img src="img33.jpg" alt="img33">
+    </a>
+  </div>
+
+  <footer>
+    <p>All right reserved by IsyaaFairus, 2025</p><br>
+  </footer>
+
+  <!-- Lightbox JS -->
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox-plus-jquery.min.js"></script>
+
+  <!-- Clock Script -->
+  <script>
+    function updateClockAndDate() {
+      const now = new Date();
+      const time = now.toLocaleTimeString('en-GB');
+      const date = now.toLocaleDateString('en-GB', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      document.getElementById('clock').textContent = '🕒 ' + time;
+      document.getElementById('date').textContent = '📅 ' + date;
+    }
+
+    setInterval(updateClockAndDate, 1000);
+    updateClockAndDate();
+  </script>
+
+</body>
+</html>

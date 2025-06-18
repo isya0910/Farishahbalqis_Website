@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Isya's Hobby</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0 0 80px 0;
+      background-image: url('background2.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    .clock-container {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      text-align: right;
+      font-size: 12px;
+      color: #444;
+    }
+
+    header {
+      background-color: lightpink;
+      color: black;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    nav {
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 10px 0;
+      opacity: 0.7;
+    }
+
+    nav a {
+      position: relative;
+      display: inline-block;
+      padding: 5px 10px;
+      color: #404040;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background-color: hotpink;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: hotpink;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      text-align: center;
+      opacity: 0.6;
+    }
+
+    .video-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin: 30px auto;
+      max-width: 1000px;
+      padding: 0 20px;
+    }
+
+    .video-card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: fadeIn 1.2s ease-in;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .video-card:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .video-card h4 {
+      margin: 0;
+      background-color: #eee;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .video-card video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0 0 10px 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .video-overlay {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      font-size: 18px;
+      text-shadow: 0 0 5px black;
+    }
+
+    .video-card:hover .video-overlay {
+      opacity: 1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .video-gallery {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
+    footer {
+      text-align: center;
+      height: 45px;
+      line-height: 1;
+      background-color: #f1f1f1;
+      color: black;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="clock-container">
+      <p id="clock">🕒 --:--:--</p>
+      <p id="date">📅 --/--/----</p>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <img src="photo.jpg" alt="My Photo" style="width:80px; height:80px; border-radius:50%; border: 2px solid white;">
+        <h1 style="margin: 0;">&#10084;STEP INTO MY WORLD&#10084;</h1>
+      </div>
+      <p style="margin-top: 0px; font-style: italic; font-size: 12px;">"Smile, explore, and be yourself!"</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">ABOUT ME</a>
+    <a href="education.html">EDUCATION</a>
+    <a href="family.html">FAMILY</a>
+    <a href="experience.html">EXPERIENCE</a>
+    <a href="friends.html">FRIENDS</a>
+    <a href="hobby.html" class="active">HOBBY</a>
+    <a href="favouriteplace.html">FAV PLACE</a>
+    <a href="favouritefood.html">FAV FOOD</a>
+    <a href="gallery.html">GALLERY</a>
+  </nav>
+
+  <section>
+    <h3>MY HOBBY</h3>
+    <p>"I love capturing moments through photos, videos, and vlogs — it's my way of keeping memories alive."</p>
+    <p>&#128073; TikTok: <a href="https://www.tiktok.com/@imfarishah" target="_blank">@imfarishah</a></p>
+    <p>&#128073; Instagram: <a href="https://www.instagram.com/frshh.blqis" target="_blank">@frshh.blqis</a></p>
+  </section>
+
+  <div class="video-gallery">
+    <div class="video-card">
+      <h4>#resepimemasak</h4>
+      <video src="video1.mp4" autoplay muted loop onclick="toggleVideo(this)"></video>
+      <div class="video-overlay">▶ Click to Play with Sound</div>
+    </div>
+    <div class="video-card">
+      <h4>#vlogtravel</h4>
+      <video src="video2.mp4" autoplay muted loop onclick="toggleVideo(this)"></video>
+      <div class="video-overlay">▶ Click to Play with Sound</div>
+    </div>
+    <div class="video-card">
+      <h4>#kakijalan</h4>
+      <video src="video3.mp4" autoplay muted loop onclick="toggleVideo(this)"></video>
+      <div class="video-overlay">▶ Click to Play with Sound</div>
+    </div>
+    <div class="video-card">
+      <h4>#unilife</h4>
+      <video src="video4.mp4" autoplay muted loop onclick="toggleVideo(this)"></video>
+      <div class="video-overlay">▶ Click to Play with Sound</div>
+    </div>
+    <div class="video-card">
+      <h4>#kakijalan</h4>
+      <video src="video5.mp4" autoplay muted loop onclick="toggleVideo(this)"></video>
+      <div class="video-overlay">▶ Click to Play with Sound</div>
+    </div>
+    <div class="video-card">
+      <h4>#vlogtravel</h4>
+      <video src="video6.mp4" autoplay muted loop onclick="toggleVideo(this)"></video>
+      <div class="video-overlay">▶ Click to Play with Sound</div>
+    </div>
+  </div>
+
+  <footer>
+    <p>All rights reserved by IsyaaFairus, 2025</p><br>
+  </footer>
+
+  <script>
+    function toggleVideo(video) {
+      if (video.paused) {
+        video.play();
+        video.muted = false;
+      } else if (!video.muted) {
+        video.pause();
+        video.muted = true;
+      } else {
+        video.muted = false;
+      }
+    }
+
+    function updateClockAndDate() {
+      const now = new Date();
+      const time = now.toLocaleTimeString('en-GB');
+      const date = now.toLocaleDateString('en-GB', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      document.getElementById('clock').textContent = '🕒 ' + time;
+      document.getElementById('date').textContent = '📅 ' + date;
+    }
+
+    setInterval(updateClockAndDate, 1000);
+    updateClockAndDate();
+  </script>
+
+</body>
+</html>

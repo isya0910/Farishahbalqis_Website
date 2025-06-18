@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Isya's Experience</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0 0 80px 0;
+      background-image: url('background2.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    .clock-container {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      text-align: right;
+      font-size: 12px;
+      color: #444;
+    }
+
+    header {
+      background-color: lightpink;
+      color: black;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    nav {
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 10px 0;
+      opacity: 0.7;
+    }
+
+    nav a {
+      position: relative;
+      display: inline-block;
+      padding: 5px 10px;
+      color: #404040;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background-color: hotpink;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: hotpink;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a.active,
+    nav a.active:hover {
+      color: hotpink;
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 20px;
+      margin: 40px auto;
+      max-width: 800px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    .timeline {
+      max-width: 800px;
+      margin: 40px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .timeline-img {
+      width: 150px;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .timeline-content {
+      flex: 1;
+    }
+
+    .timeline-content h4 {
+      margin: 0;
+      color: #d63384;
+    }
+
+    footer {
+      text-align: center;
+      height: 45px;
+      line-height: 1;
+      background-color: #f1f1f1;
+      color: black;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="clock-container">
+      <p id="clock">🕒 --:--:--</p>
+      <p id="date">📅 --/--/----</p>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <img src="photo.jpg" alt="My Photo" style="width:80px; height:80px; border-radius:50%; border: 2px solid white;">
+        <h1 style="margin: 0;">&#10084;STEP INTO MY WORLD&#10084;</h1>
+      </div>
+      <p style="margin-top: 0px; font-style: italic; font-size: 12px;">"Smile, explore, and be yourself!"</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="index.html">ABOUT ME</a>
+    <a href="education.html">EDUCATION</a>
+    <a href="family.html">FAMILY</a>
+    <a href="experience.html" class="active">EXPERIENCE</a>
+    <a href="friends.html">FRIENDS</a>
+    <a href="hobby.html">HOBBY</a>
+    <a href="favouriteplace.html">FAV PLACE</a>
+    <a href="favouritefood.html">FAV FOOD</a>
+    <a href="gallery.html">GALLERY</a>
+  </nav>
+
+  <section>
+    <h3>MY EXPERIENCE</h3>
+    <p>I love traveling and exploring nature. One of my most memorable trips was taking a train ride to Dabong with friends — the journey itself was an adventure! We also explored Bukit Salor and the beautiful rivers in Jeli like Sungai Kashmir. Nature spots like Lalang Resort, Lata Kolam, Lata Janggut, Lata Berangin, and Jeram Mengaji were truly refreshing. Each place had its own charm, making every stop feel like a hidden gem waiting to be discovered.</p>
+  </section>
+
+  <section>
+    <div class="timeline">
+      <div class="timeline-item">
+        <img src="img38.jpg" alt="Train to Dabong" class="timeline-img">
+        <div class="timeline-content">
+          <h4>Train to Dabong</h4>
+          <p>Memorable trip with friends riding a train to Dabong. The journey was full of laughter and adventure!</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <img src="img39.jpg" alt="Sungai Kashmir" class="timeline-img">
+        <div class="timeline-content">
+          <h4>Sungai Kashmir</h4>
+          <p>A peaceful river in Jeli surrounded by nature, perfect for relaxing moments.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <img src="img40.jpg" alt="Lata Kolam" class="timeline-img">
+        <div class="timeline-content">
+          <h4>Lata Kolam</h4>
+          <p>Refreshing waterfall perfect for weekend getaways with close friends and family.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <img src="img41.jpg" alt="Jeram Mengaji" class="timeline-img">
+        <div class="timeline-content">
+          <h4>Jeram Mengaji</h4>
+          <p>A unique experience of cold rivers and thick forest, perfect for nature explorers!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>All right reserved by IsyaaFairus, 2025</p><br>
+  </footer>
+
+  <script>
+    // Highlight page link
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+      }
+    });
+
+    // Clock and Date
+    function updateClockAndDate() {
+      const now = new Date();
+      const time = now.toLocaleTimeString('en-GB');
+      const date = now.toLocaleDateString('en-GB', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      document.getElementById('clock').textContent = '🕒 ' + time;
+      document.getElementById('date').textContent = '📅 ' + date;
+    }
+
+    setInterval(updateClockAndDate, 1000);
+    updateClockAndDate();
+  </script>
+
+</body>
+</html>
